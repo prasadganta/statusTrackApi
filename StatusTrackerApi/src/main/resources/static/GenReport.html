@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript">
+	var xmlhttp;
+	function init() {
+		xmlhttp = new XMLHttpRequest();
+	}
+
+function getTaskReport(){
+	var entryDate=document.getElementById("ReportDate").value;
+	
+	if(entryDate!=""){
+	var day=entryDate.split("-")[0];
+	var month=entryDate.split("-")[1];
+	var year=entryDate.split("-")[2];
+	year=year.split(" ")[0];
+	if (day < 10) {
+
+		day = "0" + day;
+
+	}
+	if (month < 10) {
+
+		month = "0" + month;
+	}
+	
+	entryDate=day+"-"+month+"-"+year;
+	alert("entryDtae:--->"+entryDate);
+	
+	var url = "http://localhost:7070/api/getAllTask?" +"entryDate=" + entryDate;
+
+xmlhttp.open('GET', url, true);
+xmlhttp.send(null);
+
+xmlhttp.onreadystatechange = function() {
+
+if (xmlhttp.readyState == 4) {
+	if (xmlhttp.status == 200) {
+alert(xmlhttp.responseText);
+
+var data=xmlhttp.responseText.split("}")[0];
+alert(data);
+
+		if (xmlhttp.responseText != "") {
+			var res = eval("(" + xmlhttp.responseText + ")");
+			
+			 
+			var table = document.getElementById("Reportdata");
+          for(var i=1;i<=xmlhttp.responseText.split("}").length-1;i++){
+        	  var tr = document.createElement('tr');            
+        	    tr.appendChild( document.createElement('td') );
+        	    tr.appendChild( document.createElement('td') );
+
+        	    tr.cells[0].appendChild( document.createTextNode(data.userName));
+        	    tr.cells[1].appendChild( document.createTextNode(res.userTask));
+
+        	    table.appendChild(tr);
+          }
+         
+		} else {
+			document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>There are  no Status updated as of now !</span>";
+		}
+	} else
+		document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>There is an Error at BackEnd process !</span>";
+}
+};
+
+}
+else{
+	document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>Please provide the ReportDate</span>";
+}
+}
+</script>
+<script language="javascript" src="ts_picker.js"></script>
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+<link href="../css/signin.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+</head>
+<body onload="init();">
+
+
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="header-logos" href="#">Virgin Media</a>
+		</div>
+	</div>
+
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-4 sidenav"></div>
+			<div class="col-sm-4 text-left">
+				<div class="login-form-area">
+
+					<h2 class="">Status Report</h2>
+
+					<div class="form-group clear-icon has-error curActive">
+						<label for="ReportDate" class="">ReportDate</label>
+						<form name="tstest" method="post"> <input type="text"
+							id="ReportDate" class="form-control signin-email"
+							placeholder="Report Date" readOnly="true" autofocus=""
+							name="ReportDate" tabindex="1" autocomplete="on" >
+							</form><a href="javascript:show_calendar('document.tstest.ReportDate', document.tstest.ReportDate.value);">
+							<img src="cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the timestamp"></a>
+						<span class="icon-clear" style="display: inline;"></span> <span
+							class="icon-error" style="display: inline;"> <i
+							class="fa fa-times"></i>
+						</span> <span class="success-message" style="display: none;"> <i
+							class="fa fa-check"></i>
+						</span>
+					</div>
+
+					<div class="form-group">
+							<input class="btn btn-primary btn-signin" type="button"
+							value="submit" onclick="getTaskReport()" /> 
+					</div>
+					<div class="form-group" id="error"></div>
+
+					<p class="info-text">
+						The report will be displayed in other window  </a>
+					</p>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+                <table id="Reportdata" border="1" >
+                   <tr>
+        <th >userName</th>
+        <th>ServiceName</th>
+        <th>task details</th>
+        <th>Entry Date</th>
+        <th>Entry Time</th>
+        
+    </tr>
+
+				<input type="hidden" name="jsEnabled" value="true">
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- <footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer> -->
+</body>
+</html>

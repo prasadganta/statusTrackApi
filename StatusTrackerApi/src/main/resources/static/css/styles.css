@@ -1,0 +1,252 @@
+/* 
+    Document   : CSSforProject01
+    Created on : 26 Jun, 2011, 8:18:38 PM
+    Author     : Himadri
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+h3.mainMM_header {
+    color:black;
+    font-family:arial,courier,gill,helvetica,sans-serif;
+    font-size:130%;
+}
+
+p.mainMM_body_font {
+    padding: 0;
+    margin:0;
+    color:black;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:110%;
+    font-weight:bold;
+    text-align:left;
+}
+
+p.mainMM_body_font1 {
+    padding: 0;
+    margin:0;
+    color:brown;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:120%;
+    font-weight:bold;
+    text-align:left;
+}
+
+p.mainMM_body_font2 {
+    padding: 0;
+    margin:0;
+    color:cyan;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:80%;
+    text-align:left;
+}
+
+p.mainMM_statistics_header {
+    color:white;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:110%;
+    font-weight:bold;
+    text-align:center;
+}
+
+p.mainMLFont {
+    color:black;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:110%;
+    font-weight:bold;
+    text-align:center;
+}
+
+p.mainML_table_header {
+    color:black;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:90%;
+    font-variant:small-caps;
+    font-weight:bold;
+    text-align:center;
+}
+
+p.mainML_table_data {
+    color:black;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:90%;
+    text-align:left;
+}
+
+p.mainML_table_data_num {
+    color:black;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:90%;
+    text-align:right;
+}
+
+#left_frame_body {
+    position:absolute;
+    top:0;
+    left:0;
+    width:200px;
+    height:100%;
+    overflow:auto;
+    background-image:url('FPL1.PNG');
+    background-repeat:no-repeat;
+    background-position:top;
+}
+
+#middle_frame_body {
+    position:absolute;
+    top:0;
+    left:200px;
+    width:80%;
+    height:100%;
+    overflow:auto;
+    background-image:url('tmbg2.PNG');
+    background-repeat:repeat;
+    background-position:left;
+    color:#fff;
+    font-family:verdana,arial,sans-serif;
+    font-size:10pt;
+}
+
+#right_frame_body {
+    position:absolute;
+    top:0;
+    right:0;
+    width:200px;
+    height:100%;
+    overflow:auto;
+    background-image:url('Cloud-9.PNG');
+    background-repeat:no-repeat;
+    background-position:center;
+    color:#fff;
+    font-family:arial,courier,gill,helvetica, sans-serif;
+    font-size:10pt;
+}
+
+body.mainFtBody{
+	font-family:arial,courier,gill,helvetica, sans-serif;
+	font-size:6pt;
+	margin:10px;
+	background-color:black;
+	color:white;
+	}
+
+body.mainMRBody {
+	color:#732828;
+	font-family:arial,courier,gill,helvetica, sans-serif;
+	font-size:90%;
+	font-variant:small-caps;
+	font-weight:bold;
+	font-stretch:ultra-expanded;
+	overflow:auto;
+	background:#E7E6C0;
+}
+
+body.mainMLBody {
+	color:#732828;
+	font-family:arial,courier,gill,helvetica, sans-serif;
+	font-size:90%;
+	font-variant:small-caps;
+	font-weight:bold;
+	font-stretch:ultra-expanded;
+	overflow:auto;
+	background:#E7E6C0;
+}
+
+body.mainTTBody {
+	color:black;
+	font-family:arial,courier,gill,helvetica, sans-serif;
+	font-size:10pt;
+	overflow:auto;
+	background:white;
+}
+
+body.mainMMBody {
+	padding: 0; 
+	margin:0;
+	color: black;
+	font-family:arial,courier,gill,helvetica, sans-serif;
+	font-size:90%;
+	font-weight:bold;
+	background-image:url('topbg1.PNG');
+	background-repeat:repeat;
+	background-position:center;
+	min-width: 100%;
+}
+
+/*globalnav*/
+#globalnav {
+	position:absolute;
+	float:left;
+	top:130px;
+	left:0;
+	padding:0 0 0 0;
+	margin:0;
+	list-style:none;
+	line-height:1em;
+}
+
+#globalnav li {
+	float:left;
+	margin:0;
+	padding:0;
+}
+
+#globalnav a {
+	display:block;
+	color:black;
+	text-decoration:none;
+	font-weight:bold;
+	background:#ddd;
+	margin:0;
+	padding:0.25em 3.15em;
+	border-left:1px solid #fff;
+	border-top:1px solid #fff;
+	border-right:1px solid #aaa;
+}
+
+#globalnav a:hover{
+        background-color: #d0d0d0;
+        color: #606060;
+}
+
+#globalnav a:active{
+        background-color: #d0d0d0;
+        color: #606060;
+}
+/*
+a.tab.activeTab, a.tab.activeTab:hover, a.tab.activeTab:visited {
+  background-color: #c0c0c0;
+  color: #000000;
+}
+
+#globalnav a.activeTab, a.activeTab:hover, a.activeTab:visited {
+  background-color: #a0a0a0;
+  color: #000000;
+}
+*/
+
+
+input.mainMMBodyInputsRo{
+    color: #ffffff;
+    font-family: arial,courier,gill,helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #72a4d2;
+}
+
+input.mainMMBodyInputsMndtry{
+    color: #ffffff;
+    font-family: arial,courier,gill,helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    background-color:brown;
+}

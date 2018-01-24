@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript">
+	var xmlhttp;
+	function init() {
+		xmlhttp = new XMLHttpRequest();
+	}
+	function insertTaskdetails() {
+		var username = document.getElementById("username");
+		var service = document.getElementById("service");
+		var status = document.getElementById("status");
+		var data = JSON.stringify({
+			"statusDetail" : {
+				"userName" : username.value,
+				"svcName" : service.value,
+				"userTask" : status.value
+			}
+		});
+		var url = "http://localhost:7070/api/insertTask";
+		xmlhttp.open('POST', url, true);
+		xmlhttp.setRequestHeader('Content-type', 'application/json');
+		xmlhttp.send(data);
+		xmlhttp.onreadystatechange = function() {
+
+			if (xmlhttp.readyState == 4) {
+				if (xmlhttp.status == 200) {
+					var res = eval("(" + xmlhttp.responseText + ")");
+					document.getElementById("status").value = res.success;
+				} else
+					document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>There is an Error at BackEnd process please inform to your lead !</span>";
+			}
+		};
+	}
+	function getTaskdetails(val) {
+
+		var date = new Date();
+		if (val == "pd") {
+			var yesterday = new Date(date.setDate(date.getDate() - 1));
+		}
+		var day = date.getDate();
+		var month = date.getMonth() + 1;
+
+		if (day < 10) {
+
+			day = "0" + day;
+
+		}
+		if (month < 10) {
+
+			month = "0" + month;
+		}
+
+		var entryDate = day + '-' + month + '-' + date.getFullYear();
+		var userName = document.getElementById("username");
+		if (username.value == '') {
+
+			document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>Insert valid username</span>";
+		} else {
+
+			var url = "http://localhost:7070/api/getTask?" + "userName="
+					+ userName.value + "&" + "entryDate=" + entryDate;
+
+			xmlhttp.open('GET', url, true);
+			xmlhttp.send(null);
+			xmlhttp.onreadystatechange = function() {
+
+				if (xmlhttp.readyState == 4) {
+					if (xmlhttp.status == 200) {
+
+						if (xmlhttp.responseText != "") {
+							var res = eval("(" + xmlhttp.responseText + ")");
+
+							document.getElementById("username").value = res.userName;
+							document.getElementById("service").value = res.svcName;
+							document.getElementById("status").value = res.userTask;
+						} else {
+							document.getElementById("username").value = "";
+							document.getElementById("service").value ="";
+							document.getElementById("status").value = "";
+							document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>There is no Status updated by you for the previous Day,To update the same check with your lead!</span>";
+						}
+					} else{
+						document.getElementById("username").value = "";
+						document.getElementById("service").value ="";
+						document.getElementById("status").value = "";
+						document.getElementById("error").innerHTML = "<span style='color: red;fontWeight:bold'>There is an Error at BackEnd process please inform to your lead !</span>";
+					   
+					}
+					}
+			};
+
+		}
+
+	}
+	
+
+</script>
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+<link href="../css/signin.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+</head>
+<body onload="init();">
+
+
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="header-logos" href="#">Virgin Media</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar"
+			style="padding-top: 20px;">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="GenReport.html">GetStatusReport</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Login</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container-fluid text-center">
+		<div class="row content">
+			<div class="col-sm-4 sidenav"></div>
+			<div class="col-sm-4 text-left">
+				<div class="login-form-area">
+
+					<h2 class="">Status</h2>
+
+					<div class="form-group clear-icon has-error curActive">
+						<label for="username" class="">Username</label> <input type="text"
+							id="username" class="form-control signin-email"
+							placeholder="Virgin media ID" required="true" autofocus=""
+							name="username" tabindex="1" autocomplete="on" value="">
+						<span class="icon-clear" style="display: inline;"></span> <span
+							class="icon-error" style="display: inline;"> <i
+							class="fa fa-times"></i>
+						</span> <span class="success-message" style="display: none;"> <i
+							class="fa fa-check"></i>
+						</span>
+					</div>
+					<div class="form-group clear-icon has-error curActive">
+						<label for="service" class="">Servicename</label> <input
+							type="text" id="service" class="form-control signin-email"
+							placeholder="Service name" required="" autofocus=""
+							name="service" tabindex="1" autocomplete="on" value=""> <span
+							class="icon-clear" style="display: inline;"></span> <span
+							class="icon-error" style="display: inline;"> <i
+							class="fa fa-times"></i>
+						</span> <span class="success-message" style="display: none;"> <i
+							class="fa fa-check"></i>
+						</span>
+					</div>
+					<div class="form-group clear-icon has-error curActive">
+						<label for="status" class="">Status</label>
+						<textarea id="status" class="form-control signin-email"
+							placeholder="Enter your work status" required="" name="status"
+							rows="5" tabindex="1"></textarea>
+					</div>
+					<!-- <div class="form-group"></div> -->
+					<!-- ReCAPTCHA-->
+
+
+
+					<div class="form-group">
+						<input class="btn btn-primary btn-signin" type="button"
+							value="submit" onclick="insertTaskdetails();" /> <input
+							class="btn btn-primary btn-signin" type="button" id="pd"
+							value="Previous Day" onclick="getTaskdetails(this.id);" /> <input
+							class="btn btn-primary btn-signin" type="button" id="cd"
+							value="Current Day" onclick="getTaskdetails(this.id);" />
+							
+					</div>
+					<div class="form-group" id="error"></div>
+
+					<p class="info-text">
+						If you dont have work, you can send mail now to your lead. It only
+						takes a minute.&nbsp;<a target="_blank" href="#">Send mail now</a>
+					</p>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+
+
+				<input type="hidden" name="jsEnabled" value="true">
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- <footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer> -->
+</body>
+</html>

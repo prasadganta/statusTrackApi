@@ -1,0 +1,11 @@
+server:
+  port: 7070
+
+spring.data.mongodb.host: localhost
+spring.data.mongodb.port: 27017
+spring.data.mongodb.database: local
+
+
+spring.view.prefix: /WEB-INF/jsp/
+spring.view.suffix: .jsp
+application.message: Hello World

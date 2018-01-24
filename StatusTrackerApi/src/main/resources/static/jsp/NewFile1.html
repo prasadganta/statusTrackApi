@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+<link href="../css/signin.css" rel="stylesheet">
+<div class="container login-container">
+	
+	<!--SSO-forms-->
+    <div class="login-form-area">
+            <form class="form-signin" id="login" action="/vm_sso/idp/login.action" method="post">
+                <h2 class="">Sign in</h2>
+                	<noscript>
+        &lt;div class="message warning"&gt;
+            &lt;p&gt;JavaScript is disabled in your browser.&lt;br/&gt;Please enable JavaScript, then close all browser windows and sign in again.&lt;br/&gt;&lt;a href="http://www.virginmedia.com/help/activation/cookies_javascript_disabled.php" title="Help with JavaScript and cookies" target="_blank"&gt;Find out how to enable JavaScript.&lt;/a&gt;&lt;/p&gt;
+        &lt;/div&gt;
+    </noscript>
+	<!-- Page error Div -->
+	<!--  div id="loginError"></div-->
+	
+				<div class="form-group clear-icon has-error curActive">
+                	<label for="username" class="">Username</label>
+                	<input type="email" id="username" class="form-control signin-email" placeholder="Email address" required="" autofocus="" name="username" tabindex="1" autocomplete="on" value="">
+                    <span class="icon-clear" style="display: inline;"></span>
+                	<span class="icon-error" style="display: inline;">
+                        <i class="fa fa-times"></i>
+                    </span>
+                     <span class="success-message" style="display: none;">
+                        <i class="fa fa-check"></i> 
+                     </span>
+                	<div class="hint">Your My Virgin Media email address</div>
+				</div>
+				<a target="_blank" href="https://my.virginmedia.com/forgot-details/username" class="form-link hidden-xs">Forgotten your username?</a>
+				<div class="form-group curActive has-error">
+                	<label for="password" class="">Password</label>
+                	<input type="password" id="password" name="password" class="form-control" tabindex="2" placeholder="Password" required="" autocomplete="on">
+                    <span class="icon-clear"></span>
+                    <span class="icon-error-pwd" style="display: inline;">
+                        <i class="fa fa-times"></i>
+                    </span>
+                     <span class="success-message-pwd" style="display: none;">
+                        <i class="fa fa-check"></i> 
+                     </span>
+                	<div class="hint">Your password is between 6 and 10 characters, begins with a letter and contains a number</div>
+                </div>
+                <a target="_blank" href="https://my.virginmedia.com/forgot-details/password" class="form-link hidden-xs">Forgotten your password?</a>
+                <!-- <div class="form-group"></div> -->  <!-- ReCAPTCHA-->
+                
+                
+                
+                <div class="form-group">
+                	<button class="btn btn-primary btn-signin" type="submit" tabindex="3">Sign in</button>
+            		<input type="hidden" name="jsEnabled" value="true">
+                </div>
+                <div class="form-link visible-xs-inline">Forgotten your&nbsp;<a target="_blank" href="https://my.virginmedia.com/forgot-details/username">username</a>&nbsp;or&nbsp;<a target="_blank" href="https://my.virginmedia.com/forgot-details/password">password</a>?</div>
+            </form>
+
+            <p class="info-text">
+            	If you're already a Virgin Media customer but don't have a My Virgin Media account, you can register now.  It only takes a minute.&nbsp;<a target="_blank" href="https://my.virginmedia.com/create-profile/register">Register now</a>
+            </p>
+        </div>
+        <div class="greetings-area hidden-xs">
+        	<h2>Sign in by entering your username &amp; password.</h2>
+        	<ul>
+        		<li><i class="fa fa-user"></i></li>
+        		<li><i class="fa fa-envelope"></i></li>
+        		<li><i class="fa fa-support"></i></li>
+        		<li><i class="fa fa-file-text"></i></li>
+        		<li><i class="fa fa-gift"></i></li>                
+        		<li><img class="tv-wings" src="../assets/images/tv-wing.png"></li>
+            </ul>
+        	<div class="clear"></div>
+        	<p class="greetings-desc">Your username is usually the email address that you gave us when you registered for My Virgin Media.</p>
+        	<p class="greetings-desc">Your password is between 6 and 10 characters, begins with a letter and contains a number.</p>
+        </div>
+    
+		</div>
+</body>
+</html>
